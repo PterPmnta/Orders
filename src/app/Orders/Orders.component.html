@@ -1,0 +1,59 @@
+<div class="container">
+  
+  <h5 class="mt-3">Datos Cliente</h5>
+  <div class="mt-2">
+
+    <ul>
+      <li>Id: {{this.orderService.order.ClientId}}</li>
+      <li>Nombre: {{this.orderService.order.ClientName}}</li>
+    </ul>
+
+  </div>
+
+  <h5 class="mt-3">Datos Factura</h5>
+  <div class="mt-2">
+
+    <ul>
+      <li>N° Factura: {{this.orderService.order.Id}}</li>
+      <li>Fecha: {{this.orderService.order.DateOrder | date}}</li>
+    </ul>
+
+  </div>
+
+  <h5 class="mt-3">Detalle factura</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Cod. Producto</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Total Unitario</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let order of this.orderService.order.Detail; let position = index">
+        <th scope="row"> {{order.ProductId}} </th>
+        <td> {{order.ProductName}} </td>
+        <td> <input (input)="calculateTotal(order.Stock)" [(ngModel)] = "order.Stock" type="text" > </td>
+        <td> {{order.Price}} </td>
+        <td> {{order.Stock * order.Price | currency }} </td>
+        <td> <button class="btn btn-danger" (click)="deleteItem(position)">Delete</button> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    
+    <div class="row align-items-start">
+      <div class="col">
+        <button class="btn btn-primary" (click)="saveFinalOrder()" >Save Order</button>
+      </div>
+      <div class="col-md-4 offset-md-2">
+        <h6>Total factura: {{totalOrder | currency }}</h6>
+      </div>
+    </div>
+  </div> 
+
+</div>

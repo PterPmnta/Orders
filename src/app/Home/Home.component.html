@@ -1,0 +1,23 @@
+
+<div class="container mt-3">
+
+  <form action="" class="form-group">
+    <input class="form-control" placeholder="Search a client" type="text" (input)="searchClients($event)" >
+  </form>
+
+  <button class="btn btn-success mt-3" routerLink="/clients">New Client</button>
+
+  <div class="row mt-3">
+    <div class="col-sm-3" *ngFor="let clients of dataClients">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> {{clients.name}} {{clients.lastname}} </h5>
+          <h6 class="card-subtitle mb-2 text-muted"> {{clients.id}} </h6>
+          <p class="card-text"> {{clients.address}} </p>
+          <button class="btn btn-primary" (click)="sendToProducts(clients)">Select</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

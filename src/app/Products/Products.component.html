@@ -1,0 +1,32 @@
+<div class="container">
+    
+  <h5 class="mt-3">Productos</h5>
+
+  <form action="" class="form-group mt-3">
+    <input class="form-control" placeholder="Search a product" type="text" (input)="searchProducts($event)" >
+  </form>
+
+  <button class="btn btn-success mt-3" routerLink="/addproduct">New Product</button>
+
+  <div class="row mt-3">
+    <div class="col-sm-3" *ngFor="let product of dataProducts">
+      <div class="card">
+        <div class="card-body">
+
+          <h5 class="card-title"> {{product.Name}} </h5>
+          <h6 class="card-subtitle mb-2 text-muted"> {{product.Brand}} </h6>
+          <p class="card-text"> {{product.Type}} - {{product.Id}} </p> 
+          <p class="card-text"> {{product.Stock}} </p>
+          <p class="card-text"> {{product.Price | currency}} </p>
+          <button class="btn btn-info" (click)="addProduct(product)">
+            Add Product
+          </button>                   
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  
+</div> 
+  
